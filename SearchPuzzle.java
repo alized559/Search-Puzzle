@@ -5,15 +5,18 @@ import java.io.FileNotFoundException;
 public class SearchPuzzle {
   public static void main(String[] args) throws FileNotFoundException {
     Scanner input = new Scanner(System.in);
-    System.out.print("Please enter a word to search: ");
     char[][] grid = createPuzzle("grid.txt");
     int n = grid.length, m = grid[0].length;
     boolean running = true;
     while (running) {
-      String word = input.next();
-      System.out.println("Puzzle : ");
-      int[] result = search(grid, n, m, word);
+      System.out.println("Puzzle:");
       printGrid(grid);
+      System.out.println();
+      System.out.print("Please enter a word or # to exit: ");
+      String word = input.next();
+      if (word.equals("#"))
+        break;
+      int[] result = search(grid, n, m, word);
       if (result[0] == -1) {
         System.out.println(word + " not found.");
       } else {
@@ -33,14 +36,8 @@ public class SearchPuzzle {
           System.out.println(word + " found: row " + (result[0] + 1) + ", column "
                              + (result[1] + 1) + ", " + "going up");
         }
-        System.out.println("\nDo you want to continue? (enter # to stop): ");
-        String c = input.next();
-        if (c.equalsIgnoreCase("#")) {
-          running = false;
-        } else {
-          System.out.print("Please enter a word to search: ");
-        }
       }
+      System.out.println();
     }
   }
 
