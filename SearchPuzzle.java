@@ -53,11 +53,11 @@ public class SearchPuzzle {
              throws FileNotFoundException {
     Scanner readFile = new Scanner(new File("grid.txt"));
     int n = readFile.nextInt(), m = readFile.nextInt();
-    String readLine = readFile.next();
     char[][] grid = new char[n][m];
     for (int i = 0; i < n; i++) {
+      String line = readFile.next();
       for (int j = 0; j < m; j++) {
-        grid[i][j] = readLine.charAt(j + i * m);
+        grid[i][j] = line.charAt(j);
       }
     }
     return grid;
