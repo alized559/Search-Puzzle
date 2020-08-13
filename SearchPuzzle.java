@@ -8,10 +8,10 @@ public class SearchPuzzle {
     char[][] grid = createPuzzle("grid.txt");
     int n = grid.length, m = grid[0].length;
     boolean running = true;
+    System.out.println("Puzzle:");
+    printGrid(grid);
+    System.out.println();
     while (running) {
-      System.out.println("Puzzle:");
-      printGrid(grid);
-      System.out.println();
       System.out.print("Please enter a word or # to exit: ");
       String word = input.next();
       if (word.equals("#"))
